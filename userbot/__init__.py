@@ -20,35 +20,6 @@ from telethon.sessions import StringSession
 
 load_dotenv("config.env")
 
-# Bot Logs setup:
-CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
-
-if CONSOLE_LOGGER_VERBOSE:
-    basicConfig(
-        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-        level=DEBUG,
-    )
-else:
-    basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-                level=INFO)
-LOGS = getLogger(__name__)
-
-if version_info[0] < 3 or version_info[1] < 6:
-    LOGS.info("You MUST have a python version of at least 3.6."
-               "Multiple features depend on this. Bot quitting.")
-    quit(1)
-
-# Check if the config was edited by using the already used variable.
-# Basically, its the 'virginity check' for the config file ;)
-CONFIG_CHECK = os.environ.get(
-    "___________PLOX_______REMOVE_____THIS_____LINE__________", None)
-
-if CONFIG_CHECK:
-    LOGS.info(
-        "Please remove the line mentioned in the first hashtag from the config.env file"
-    )
-    quit(1)
-
 # Telegram App KEY and HASH
 API_KEY = os.environ.get("API_KEY", None)
 API_HASH = os.environ.get("API_HASH", None)
@@ -57,13 +28,13 @@ API_HASH = os.environ.get("API_HASH", None)
 STRING_SESSION = os.environ.get("STRING_SESSION", None)
 
 # Logging channel/group configuration.
-BOTLOG_CHATID = int(os.environ.get("BOTLOG_CHATID", None))
+BOTLOG_CHATID = int(os.environ.get("BOTLOG_CHATID", -336270529))
 
 # Userbot logging feature switch.
-BOTLOG = sb(os.environ.get("BOTLOG", "False"))
+BOTLOG = sb(os.environ.get("BOTLOG", "True"))
 
 # Bleep Blop, this is a bot ;)
-PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
+PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "True"))
 
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -85,9 +56,9 @@ GOOGLE_CHROME_BIN = os.environ.get("GOOGLE_CHROME_BIN", None)
 OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
 
 # Anti Spambot Config
-ANTI_SPAMBOT = sb(os.environ.get("ANTI_SPAMBOT", "False"))
+ANTI_SPAMBOT = sb(os.environ.get("ANTI_SPAMBOT", "True"))
 
-ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "False"))
+ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "True"))
 
 # Youtube API key
 YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
@@ -96,7 +67,7 @@ YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
 ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
 
 # Time & Date - Country and Time Zone
-COUNTRY = str(os.environ.get("COUNTRY", ""))
+COUNTRY = str(os.environ.get("COUNTRY", "India"))
 
 TZ_NUMBER = int(os.environ.get("TZ_NUMBER", 1))
 
